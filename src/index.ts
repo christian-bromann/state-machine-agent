@@ -44,7 +44,7 @@ const result2 = await runAgent(
   agent,
   [
     new HumanMessage(
-      "Find all TypeScript files in the ./libs/langchain/src directory and look for any TODO comments"
+      "Find all TypeScript files in the ./src directory and look for any TODO comments"
     ),
   ],
   config
@@ -61,7 +61,7 @@ const contextBuildResult = await runAgent(
   agent,
   [
     new HumanMessage(
-      "Find all TypeScript files in the ./libs/langchain/src directory"
+      "Find all TypeScript files in the ./src directory"
     ),
   ],
   config

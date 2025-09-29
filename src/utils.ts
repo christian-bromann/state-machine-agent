@@ -40,6 +40,10 @@ export async function runAgent(
       });
     }
 
+    /**
+     * @todo: fine me 😉
+     */
+
     const interruptRequest = result
       .__interrupt__?.[0] as Interrupt<InterruptRequest>;
 

@@ -27,7 +27,7 @@
     "langchain": "alpha"
   },
   "devDependencies": {
-    "@types/node": "^16.4.6",
+    "@types/node": "^24.5.2",
     "npm-run-all2": "^8.0.4",
     "tsx": "^4.20.6",
     "typescript": "^4.3.5",

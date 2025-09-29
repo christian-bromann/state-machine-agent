@@ -39,7 +39,15 @@ export const stateClassificationMiddleware = createMiddleware({
      * end the loop if the user is satisfied
      */
     const lastToolCall = runtime.toolCalls.at(-1);
+
+    /**
+     * end the loop if the user is satisfied, that is:
+     * - there is a history of tool calls
+     * - the last tool call is an attempt_completion
+     * - the result of the last tool call includes "y"
+     */
     const isUserSatisfied =
+      currentHistory.length > 0 &&
       lastToolCall?.name === "attempt_completion" &&
       (lastToolCall?.result as string)?.toLowerCase().includes("y");
 
@@ -80,7 +88,6 @@ export const stateClassificationMiddleware = createMiddleware({
      */
     const lastToolCall = runtime.toolCalls.at(-1);
     const result = (lastToolCall?.result as string) || "";
-    const lastAction = state.contextHistory?.at(-1);
     if (lastToolCall?.name === "new_task") {
       if (result.includes("NEW TASK CONFIRMED:")) {
         // Extract and set current task
@@ -112,7 +119,7 @@ export const stateClassificationMiddleware = createMiddleware({
     /**
      * clear context and task
      */
-    if (lastAction === "attempt_completion") {
+    if (lastToolCall?.name === "attempt_completion" && result.includes("y")) {
       return {
         contextHistory: [],
         currentTask: undefined,
