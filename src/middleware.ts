@@ -43,9 +43,6 @@ export const stateClassificationMiddleware = createMiddleware({
       lastToolCall?.name === "attempt_completion" &&
       (lastToolCall?.result as string)?.toLowerCase().includes("y");
 
-    console.log(11, state.messages);
-    console.log(22, "isUserSatisfied", isUserSatisfied);
-    console.log(33, "lastToolCall", lastToolCall);
     if (isUserSatisfied) {
       return {
         ...request,
