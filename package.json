@@ -1,21 +1,13 @@
 {
-  "name": "typescript-starter",
+  "name": "state-machine-agent",
   "version": "0.0.0",
   "description": "tbd",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "run-s clean compile",
     "clean": "rimraf tsconfig.tsbuildinfo ./build ./coverage",
     "compile": "tsc -p ./tsconfig.json",
-    "eslint": "eslint -c ./.eslintrc.js ./src/**/*.ts ./tests/**/*.ts",
-    "release": "release-it --github.release",
-    "release:ci": "npm run release -- --ci --npm.skipChecks --no-git.requireCleanWorkingDir",
-    "release:patch": "npm run release -- patch",
-    "release:minor": "npm run release -- minor",
-    "release:major": "npm run release -- major",
-    "test": "run-s build eslint test:unit",
-    "test:unit": "jest --coverage",
-    "watch": "npm run compile -- --watch"
+    "start": "tsx ./src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -27,18 +19,19 @@
     "url": "https://github.com/christian-bromann/typescript-starter/issues"
   },
   "homepage": "https://github.com/christian-bromann/typescript-starter#readme",
+  "dependencies": {
+    "@langchain/core": "alpha",
+    "@langchain/openai": "alpha",
+    "@langchain/langgraph": "next",
+    "glob": "^11.0.3",
+    "langchain": "alpha"
+  },
   "devDependencies": {
-    "@types/jest": "^26.0.24",
     "@types/node": "^16.4.6",
-    "@typescript-eslint/eslint-plugin": "^4.28.5",
-    "@typescript-eslint/parser": "^4.28.5",
-    "eslint": "^7.31.0",
-    "eslint-plugin-import": "^2.23.4",
-    "jest": "^27.0.6",
-    "npm-run-all": "^4.1.5",
-    "release-it": "^14.10.1",
-    "ts-jest": "^27.0.4",
-    "ts-node": "^10.1.0",
-    "typescript": "^4.3.5"
-  }
+    "npm-run-all2": "^8.0.4",
+    "tsx": "^4.20.6",
+    "typescript": "^4.3.5",
+    "zod": "^4.1.11"
+  },
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
 }
